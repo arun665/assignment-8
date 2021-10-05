@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+   <%- include('./navbar.ejs') %>
+
+    <div class="container">
+<h1> edit form</h1>
+        <% if(message.length>0){ %>
+        <div class="alert alert-success  mb-3">
+            <p> <%= message %></p>
+        </div>
+        <%}%>
+        <% if(error.length>0){ %>
+        <div class="alert alert-danger mb-3">
+            <p> <%= error %></p>
+        </div>
+        <%}%>
+
+
+        <form action="/edit/<%= x._id %>" method="post">
+            <div class="form-group">
+              <label for="email">Name</label>
+              <input type="text" class="form-control" placeholder="(min-char :3)" name="name" value="<%= x.name %> " required >
+            </div>
+            <div class="form-group">
+              <label for="pwd">Contact Number</label>
+              <input type="text" class="form-control" placeholder="xxxxxxxxxx" name="phone" value="<%= x.phone %> " pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required >
+            </div>
+            <div class="form-group">
+                <label for="pwd">Email</label>
+                <input type="email" class="form-control" placeholder="Enter E-mail" value="<%= x.email %> " name="mail" required >
+              </div>
+              <div class="form-group">
+                <label for="pwd">Check-in Time</label>
+                <input type="time" class="form-control" placeholder="Enter check-in time" value="<%= x.time %> " name="time" required >
+              </div>
+              <div class="form-group">
+                <label for="pwd">Address</label>
+                <input type="text" class="form-control" placeholder="Enter address " value="<%= x.address %> " name="address"  required>
+              </div>
+              <div class="form-group">
+                <label for="pwd">Date</label>
+                <input type="date" class="form-control" placeholder="Enter date" name="date" value="<%= x.date %> " required>
+              </div>
+   
+     
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </div>
+
+          </form>
+    </div>
+</body>
+</html>

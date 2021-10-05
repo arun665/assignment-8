@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <%- include('./navbar.ejs') %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <% list.forEach(function(check){ %>
+            <div class="col-sm-4 col-md-4 col-6">
+                <div class="card">
+                  
+                    <div class="card-body">
+                        
+                        <p>name:<%= check.name %></p>
+                        <p>  address: <%= check.address %> </p> 
+                        <p>  phone: <%= check.phone %> </p>
+            
+                        <p>  email: <%= check.email %> </p>
+                     </div>
+                    <div class="card-footer"> 
+                        
+                       <p>check-in time : <%= check.time %>   </p>
+                    
+                        <form action="/delete/<%= check._id %>" method="get">
+                            <button type="submit" class="btn btn-danger mb-3"> delete</button>
+                        </form>
+                    
+                        <form action="/edit/<%= check._id %>" method="get">
+                            <button type="submit" class="btn btn-secondary mb-3"> Edit </button>
+                        </form>
+                    
+                    </div>
+
+                  </div>
+            </div>
+        <%})%>
+        </div>
+    </div>
+</body>
+</html>
