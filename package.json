@@ -13,12 +13,13 @@
     "express-validator": "^6.12.2",
     "flash": "^1.1.0",
     "mongoose": "^6.0.9",
+    "nodemailer": "^6.6.5",
     "nodemon": "^2.0.13"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index"
+    "start": "node index"
   },
   "author": "",
   "license": "ISC"

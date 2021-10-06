@@ -56,7 +56,38 @@ var user=new Product({
 
 await user.save();
 
-req.flash("success","check in successfull")
+
+
+var nodemailer = require("nodemailer");
+ 
+var sender = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'arunsharmamoh4@gmail.com',
+    pass: 'Arun1117'
+  }
+});
+ 
+var mail = {
+  from: "arunsharmamoh4@gmail.com",
+  to: email,
+  subject: "thanks "+name+" checking in ,",
+  html: " <p>thanks for taking time out of your busy schedule and checking in using our form </p> <br/> <hr></hr><p> name :"+name+" </p><br/> <p> phone :"+phone+" </p> <br/> <p> time :"+time+" </p> <br/> <p> date :"+date+" </p>" 
+};
+ 
+  await sender.sendMail(mail, function(error, info) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Email sent successfully: "
+                 + info.response);
+  }
+});
+
+
+
+
+req.flash("success","check in successfull , You will receive a mail shortly of the confirmation of your booking")
 res.render('form',{message:req.flash("success"),error:req.flash("error")});
 
 }
